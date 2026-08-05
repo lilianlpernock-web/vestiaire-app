@@ -1,5 +1,5 @@
 const CACHE_NAME = 'vestiaire-v1';
-const ASSETS = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
+const ASSETS = ['./', './index.html', './manifest.json', './icône-192.png', './icône-512.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
