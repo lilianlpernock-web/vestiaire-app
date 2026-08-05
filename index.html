@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VESTIAIRE — Carnet d'entraînement</title>
+<meta name="theme-color" content="#14201A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vestiaire">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Mono:wght@500;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#14201A;
+    --panel:#1B2A22;
+    --panel-2:#22352A;
+    --turf:#2F6B3F;
+    --turf-light:#4C9A5F;
+    --chalk:#F2EFE4;
+    --chalk-dim:#B9C2B7;
+    --amber:#FFB238;
+    --coral:#FF5A45;
+    --line:rgba(242,239,228,0.12);
+  }
+  *{box-sizing:border-box;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 20% -10%, rgba(76,154,95,0.25), transparent 45%),
+      var(--bg-deep);
+    color:var(--chalk);
+    font-family:'Work Sans', sans-serif;
+    min-height:100vh;
+  }
+  .display{font-family:'Anton', sans-serif; letter-spacing:0.02em; text-transform:uppercase;}
+  .mono{font-family:'Roboto Mono', monospace;}
+  .wrap{max-width:520px; margin:0 auto; padding:20px 18px 60px;}
+
+  /* header / scoreboard */
+  .topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;}
+  .brand{font-size:26px; line-height:1;}
+  .brand span{color:var(--amber);}
+  .streak{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:8px 14px;
+    text-align:center;
+    min-width:70px;
+  }
+  .streak .num{font-family:'Roboto Mono',monospace; font-size:22px; font-weight:700; color:var(--amber); line-height:1;}
+  .streak .lbl{font-size:9px; letter-spacing:0.12em; color:var(--chalk-dim); text-transform:uppercase; margin-top:2px;}
+
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:16px;
+  }
+  h1.display{font-size:34px; margin:6px 0 6px;}
+  h2.display{font-size:20px; margin:0 0 14px;}
+  p.sub{color:var(--chalk-dim); font-size:14px; margin:0 0 20px; line-height:1.5;}
+
+  label{display:block; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--chalk-dim); margin:16px 0 8px;}
+  label:first-of-type{margin-top:0;}
+  input[type=text], input[type=number], select{
+    width:100%; background:var(--panel-2); border:1px solid var(--line); color:var(--chalk);
+    border-radius:8px; padding:12px 14px; font-family:'Work Sans',sans-serif; font-size:15px;
+  }
+  input:focus, select:focus, button:focus-visible, .choice:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+
+  .choices{display:flex; gap:8px; flex-wrap:wrap;}
+  .choice{
+    flex:1; min-width:90px; text-align:center; padding:10px 8px; border-radius:8px;
+    border:1px solid var(--line); background:var(--panel-2); cursor:pointer; font-size:13px; color:var(--chalk-dim);
+  }
+  .choice.active{border-color:var(--amber); color:var(--bg-deep); background:var(--amber); font-weight:600;}
+
+  button.primary{
+    width:100%; margin-top:24px; background:var(--coral); color:var(--chalk); border:none;
+    border-radius:10px; padding:15px; font-family:'Anton',sans-serif; font-size:16px; letter-spacing:0.04em;
+    cursor:pointer; text-transform:uppercase;
+  }
+  button.primary:active{transform:scale(0.98);}
+  button.ghost{
+    width:100%; margin-top:10px; background:transparent; color:var(--chalk-dim); border:1px solid var(--line);
+    border-radius:10px; padding:12px; font-family:'Work Sans',sans-serif; font-size:13px; cursor:pointer;
+  }
+
+  /* dashboard */
+  .cat-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px;}
+  .cat{
+    border-radius:12px; padding:16px 14px; cursor:pointer; border:1px solid var(--line);
+    background:var(--panel-2); position:relative; overflow:hidden;
+  }
+  .cat .tag{font-family:'Roboto Mono',monospace; font-size:10px; color:var(--chalk-dim); letter-spacing:0.08em;}
+  .cat .name{font-family:'Anton',sans-serif; font-size:18px; margin-top:6px; text-transform:uppercase;}
+  .cat.force{border-left:4px solid var(--coral);}
+  .cat.cardio{border-left:4px solid var(--amber);}
+  .cat.mix{border-left:4px solid var(--turf-light); grid-column:1/3;}
+
+  .badge-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
+  .badge{
+    background:var(--panel-2); border:1px solid var(--line); border-radius:20px;
+    padding:6px 12px; font-size:12px; color:var(--chalk-dim);
+  }
+  .badge.unlocked{color:var(--bg-deep); background:var(--amber); border-color:var(--amber); font-weight:600;}
+
+  /* session */
+  .ex-item{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px; border-radius:10px; background:var(--panel-2); border:1px solid var(--line); margin-bottom:10px;
+  }
+  .ex-item.done{opacity:0.45;}
+  .ex-name{font-weight:600; font-size:15px;}
+  .ex-meta{font-size:12px; color:var(--chalk-dim); margin-top:2px;}
+  .ex-check{
+    width:32px; height:32px; border-radius:50%; border:2px solid var(--turf-light); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; background:transparent; color:transparent;
+  }
+  .ex-item.done .ex-check{background:var(--turf-light); color:var(--bg-deep); font-weight:700;}
+
+  .scoreboard{
+    background:var(--bg-deep); border:1px solid var(--line); border-radius:12px; padding:24px;
+    text-align:center; margin:8px 0 20px;
+  }
+  .scoreboard .digits{font-family:'Roboto Mono',monospace; font-size:52px; font-weight:700; color:var(--amber); letter-spacing:0.05em;}
+  .scoreboard .of{font-size:11px; color:var(--chalk-dim); letter-spacing:0.1em; text-transform:uppercase; margin-top:6px;}
+
+  .progress-bar{height:6px; background:var(--panel-2); border-radius:4px; overflow:hidden; margin-bottom:20px;}
+  .progress-bar .fill{height:100%; background:var(--turf-light); transition:width 0.3s;}
+
+  .center{text-align:center;}
+  .big-emoji{font-size:44px; margin-bottom:8px;}
+  .hidden{display:none;}
+  .top-link{background:none; border:none; color:var(--chalk-dim); font-size:13px; cursor:pointer; padding:0;}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+const CATS = {
+  force: {
+    label:'Force', tag:'N°01 · MUSCLE', cls:'force',
+    pool:[
+      {name:'Pompes', type:'reps', base:10, desc:'Dos droit, descend contrôlé'},
+      {name:'Squats', type:'reps', base:15, desc:'Genoux dans l\'axe des pieds'},
+      {name:'Fentes avant', type:'reps', base:12, desc:'6 par jambe'},
+      {name:'Gainage planche', type:'time', base:30, desc:'Corps aligné, respire'},
+      {name:'Dips sur chaise', type:'reps', base:10, desc:'Coudes vers l\'arrière'},
+      {name:'Superman', type:'reps', base:12, desc:'Contracte le bas du dos'},
+      {name:'Squats sautés', type:'reps', base:10, desc:'Réception souple'},
+    ]
+  },
+  cardio: {
+    label:'Vitesse & endurance', tag:'N°02 · CARDIO', cls:'cardio',
+    pool:[
+      {name:'Montées de genoux', type:'time', base:30, desc:'Rythme rapide, sur place'},
+      {name:'Jumping jacks', type:'time', base:30, desc:'Amplitude complète'},
+      {name:'Sprint sur place', type:'time', base:20, desc:'Vitesse maximale'},
+      {name:'Talons-fesses', type:'time', base:30, desc:'Cadence rapide'},
+      {name:'Corde à sauter (mimée)', type:'time', base:40, desc:'Petits sauts réguliers'},
+      {name:'Burpees', type:'reps', base:8, desc:'Enchaîne sans t\'arrêter'},
+      {name:'Skater jumps', type:'reps', base:14, desc:'7 de chaque côté'},
+    ]
+  }
+};
+const BADGES = [
+  {id:'first', label:'1ère séance', need:s=>s.totalSessions>=1},
+  {id:'streak3', label:'3 jours de suite', need:s=>s.streak>=3},
+  {id:'streak7', label:'1 semaine', need:s=>s.streak>=7},
+  {id:'ten', label:'10 séances', need:s=>s.totalSessions>=10},
+];
+
+let profile=null, stats=null, currentSession=null, timerHandle=null;
+
+// Utilise window.storage si dispo (aperçu Claude), sinon localStorage (hébergement autonome)
+const hasClaudeStorage = typeof window.storage !== 'undefined';
+async function storageGet(key){
+  if(hasClaudeStorage){
+    try{ const r = await window.storage.get(key, false); return r ? r.value : null; }catch(e){ return null; }
+  }
+  return localStorage.getItem(key);
+}
+async function storageSet(key, value){
+  if(hasClaudeStorage){
+    try{ await window.storage.set(key, value, false); }catch(e){}
+  } else {
+    try{ localStorage.setItem(key, value); }catch(e){}
+  }
+}
+
+async function loadState(){
+  try{ const p = await storageGet('profile'); profile = p ? JSON.parse(p) : null; }
+  catch(e){ profile = null; }
+  try{ const s = await storageGet('stats'); stats = s ? JSON.parse(s) : null; }
+  catch(e){ stats = null; }
+  if(!stats) stats = {streak:0, lastDate:null, totalSessions:0, badges:[]};
+}
+async function saveProfile(){ await storageSet('profile', JSON.stringify(profile)); }
+async function saveStats(){ await storageSet('stats', JSON.stringify(stats)); }
+
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+
+function el(html){ const d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstElementChild; }
+
+function render(node){ const app=document.getElementById('app'); app.innerHTML=''; app.appendChild(node); }
+
+function levelMult(niveau){ return niveau==='debutant'?0.7:niveau==='avance'?1.3:1; }
+function exCount(temps){ return temps==='15'?4:temps==='45'?8:6; }
+
+function buildSession(){
+  const mult = levelMult(profile.niveau);
+  const n = exCount(profile.temps);
+  let pools=[];
+  if(profile.objectif==='force') pools=[CATS.force.pool];
+  else if(profile.objectif==='cardio') pools=[CATS.cardio.pool];
+  else pools=[CATS.force.pool, CATS.cardio.pool];
+
+  let all=[];
+  pools.forEach(p=>all=all.concat(p));
+  // shuffle
+  for(let i=all.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [all[i],all[j]]=[all[j],all[i]]; }
+  const picked = all.slice(0, Math.min(n, all.length)).map(e=>{
+    const val = Math.max(5, Math.round(e.base*mult / (e.type==='time'?5:1)) * (e.type==='time'?5:1));
+    return {...e, value:val, done:false};
+  });
+  return picked;
+}
+
+/* ---------- SCREENS ---------- */
+
+function screenOnboarding(){
+  const state = {age:'', niveau:'intermediaire', temps:'30', objectif:'mix', sport:''};
+  const wrap = el(`<div>
+    <div class="topbar"><div class="brand display">VEST<span>I</span>AIRE</div></div>
+    <div class="card">
+      <h1 class="display">Avant le coup d'envoi</h1>
+      <p class="sub">Réponds à ces quelques questions pour que ton programme te corresponde.</p>
+
+      <label for="age">Ton âge</label>
+      <input type="number" id="age" min="8" max="18" placeholder="Ex : 13">
+
+      <label for="sport">Ton sport (optionnel)</label>
+      <input type="text" id="sport" placeholder="Foot, basket, natation...">
+
+      <label>Ton niveau</label>
+      <div class="choices" id="niveau-choices">
+        <div class="choice" data-v="debutant">Débutant</div>
+        <div class="choice active" data-v="intermediaire">Intermédiaire</div>
+        <div class="choice" data-v="avance">Avancé</div>
+      </div>
+
+      <label>Temps par séance</label>
+      <div class="choices" id="temps-choices">
+        <div class="choice" data-v="15">15 min</div>
+        <div class="choice active" data-v="30">30 min</div>
+        <div class="choice" data-v="45">45 min</div>
+      </div>
+
+      <label>Ton objectif</label>
+      <div class="choices" id="objectif-choices">
+        <div class="choice" data-v="force">Muscle</div>
+        <div class="choice" data-v="cardio">Vitesse</div>
+        <div class="choice active" data-v="mix">Les deux</div>
+      </div>
+
+      <button class="primary" id="start-btn">Créer mon programme</button>
+    </div>
+  </div>`);
+
+  function wireChoices(id, key){
+    wrap.querySelector('#'+id).addEventListener('click', (ev)=>{
+      const c = ev.target.closest('.choice'); if(!c) return;
+      wrap.querySelectorAll('#'+id+' .choice').forEach(x=>x.classList.remove('active'));
+      c.classList.add('active');
+      state[key]=c.dataset.v;
+    });
+  }
+  wireChoices('niveau-choices','niveau');
+  wireChoices('temps-choices','temps');
+  wireChoices('objectif-choices','objectif');
+
+  wrap.querySelector('#start-btn').addEventListener('click', async ()=>{
+    const age = wrap.querySelector('#age').value;
+    state.age = age? parseInt(age):null;
+    state.sport = wrap.querySelector('#sport').value.trim();
+    profile = {...state};
+    await saveProfile();
+    render(screenDashboard());
+  });
+
+  return wrap;
+}
+
+function screenDashboard(){
+  const unlocked = stats.badges;
+  const wrap = el(`<div>
+    <div class="topbar">
+      <div class="brand display">VEST<span>I</span>AIRE</div>
+      <div class="streak"><div class="num mono">${stats.streak}</div><div class="lbl">Jours de suite</div></div>
+    </div>
+    <div class="card">
+      <h2 class="display">Salut${profile.age? ' champion':''} 👋</h2>
+      <p class="sub">${stats.totalSessions} séance${stats.totalSessions>1?'s':''} bouclée${stats.totalSessions>1?'s':''}. Prêt pour aujourd'hui ?</p>
+      <div class="cat-grid">
+        <div class="cat force" id="go-force"><div class="tag mono">${CATS.force.tag}</div><div class="name">Muscle</div></div>
+        <div class="cat cardio" id="go-cardio"><div class="tag mono">${CATS.cardio.tag}</div><div class="name">Vitesse</div></div>
+        <div class="cat mix" id="go-mix"><div class="tag mono">N°03 · SÉANCE DU JOUR</div><div class="name">Programme complet</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2 class="display" style="font-size:16px;">Badges</h2>
+      <div class="badge-row">
+        ${BADGES.map(b=>`<div class="badge ${unlocked.includes(b.id)?'unlocked':''}">${b.label}</div>`).join('')}
+      </div>
+    </div>
+    <button class="ghost" id="edit-profile">Modifier mon profil</button>
+  </div>`);
+
+  function startWith(objectif){
+    const savedObjectif = profile.objectif;
+    profile.objectif = objectif;
+    currentSession = buildSession();
+    profile.objectif = savedObjectif;
+    render(screenSession());
+  }
+  wrap.querySelector('#go-force').addEventListener('click', ()=>startWith('force'));
+  wrap.querySelector('#go-cardio').addEventListener('click', ()=>startWith('cardio'));
+  wrap.querySelector('#go-mix').addEventListener('click', ()=>startWith('mix'));
+  wrap.querySelector('#edit-profile').addEventListener('click', ()=>render(screenOnboarding()));
+
+  return wrap;
+}
+
+function screenSession(){
+  const wrap = el(`<div>
+    <div class="topbar">
+      <button class="top-link" id="back-btn">← Quitter</button>
+    </div>
+    <div class="card">
+      <h2 class="display">Ta séance</h2>
+      <div class="progress-bar"><div class="fill" id="prog-fill" style="width:0%"></div></div>
+      <div id="ex-list"></div>
+    </div>
+    <button class="primary hidden" id="finish-btn">Terminer la séance</button>
+  </div>`);
+
+  function refreshList(){
+    const list = wrap.querySelector('#ex-list');
+    list.innerHTML = currentSession.map((e,i)=>`
+      <div class="ex-item ${e.done?'done':''}" data-i="${i}">
+        <div>
+          <div class="ex-name">${e.name}</div>
+          <div class="ex-meta">${e.type==='reps'? e.value+' répétitions' : e.value+' secondes'} · ${e.desc}</div>
+        </div>
+        <div class="ex-check" data-i="${i}">✓</div>
+      </div>`).join('');
+    list.querySelectorAll('.ex-check').forEach(c=>{
+      c.addEventListener('click', ()=>{
+        const i = parseInt(c.dataset.i);
+        if(currentSession[i].type==='time' && !currentSession[i].done){
+          openTimer(i);
+        } else {
+          currentSession[i].done = !currentSession[i].done;
+          refreshList();
+        }
+      });
+    });
+    const doneCount = currentSession.filter(e=>e.done).length;
+    wrap.querySelector('#prog-fill').style.width = Math.round(doneCount/currentSession.length*100)+'%';
+    wrap.querySelector('#finish-btn').classList.toggle('hidden', doneCount===0);
+  }
+
+  function openTimer(i){
+    const ex = currentSession[i];
+    let remaining = ex.value;
+    const overlay = el(`<div class="card scoreboard-wrap">
+      <div class="scoreboard">
+        <div class="digits mono" id="timer-digits">${remaining}</div>
+        <div class="of">${ex.name}</div>
+      </div>
+      <button class="primary" id="timer-toggle">Démarrer</button>
+    </div>`);
+    wrap.insertBefore(overlay, wrap.querySelector('#ex-list').parentElement.nextSibling);
+    let running=false;
+    const digits = overlay.querySelector('#timer-digits');
+    const btn = overlay.querySelector('#timer-toggle');
+    btn.addEventListener('click', ()=>{
+      if(running){ clearInterval(timerHandle); running=false; btn.textContent='Reprendre'; return; }
+      running=true; btn.textContent='Pause';
+      timerHandle = setInterval(()=>{
+        remaining--;
+        digits.textContent = remaining;
+        if(remaining<=0){
+          clearInterval(timerHandle);
+          overlay.remove();
+          currentSession[i].done=true;
+          refreshList();
+        }
+      },1000);
+    });
+  }
+
+  wrap.querySelector('#back-btn').addEventListener('click', ()=>{ clearInterval(timerHandle); render(screenDashboard()); });
+  wrap.querySelector('#finish-btn').addEventListener('click', async ()=>{
+    clearInterval(timerHandle);
+    const today = todayStr();
+    if(stats.lastDate !== today){
+      const y = new Date(); y.setDate(y.getDate()-1);
+      const yesterday = y.toISOString().slice(0,10);
+      stats.streak = (stats.lastDate===yesterday) ? stats.streak+1 : 1;
+      stats.lastDate = today;
+      stats.totalSessions++;
+    }
+    BADGES.forEach(b=>{ if(b.need(stats) && !stats.badges.includes(b.id)) stats.badges.push(b.id); });
+    await saveStats();
+    render(screenRecap());
+  });
+
+  refreshList();
+  return wrap;
+}
+
+function screenRecap(){
+  const newBadges = BADGES.filter(b=>stats.badges.includes(b.id));
+  const wrap = el(`<div class="card center">
+    <div class="big-emoji">🏆</div>
+    <h1 class="display">Séance terminée</h1>
+    <p class="sub">Bien joué ! Ton streak est maintenant de <strong style="color:var(--amber)">${stats.streak}</strong> jour${stats.streak>1?'s':''}.</p>
+    <div class="badge-row" style="justify-content:center;">
+      ${newBadges.map(b=>`<div class="badge unlocked">${b.label}</div>`).join('')}
+    </div>
+    <button class="primary" id="dash-btn">Retour au vestiaire</button>
+  </div>`);
+  wrap.querySelector('#dash-btn').addEventListener('click', ()=>render(screenDashboard()));
+  return wrap;
+}
+
+(async function init(){
+  render(el('<div class="center" style="padding-top:80px; color:var(--chalk-dim);">Chargement...</div>'));
+  await loadState();
+  render(profile ? screenDashboard() : screenOnboarding());
+})();
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>
