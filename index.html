@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -43,7 +43,7 @@
   .display{font-family:'Anton', sans-serif; letter-spacing:0.02em; text-transform:uppercase;}
   .mono{font-family:'Roboto Mono', monospace;}
   .wrap{max-width:520px; margin:0 auto; padding:20px 18px 60px;}
-
+ 
   .topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px;}
   .brand{font-size:26px; line-height:1;}
   .brand span{color:var(--amber);}
@@ -57,7 +57,7 @@
   }
   .streak .num{font-family:'Roboto Mono',monospace; font-size:22px; font-weight:700; color:var(--amber); line-height:1;}
   .streak .lbl{font-size:9px; letter-spacing:0.12em; color:var(--chalk-dim); text-transform:uppercase; margin-top:2px;}
-
+ 
   .card{
     background:var(--panel);
     border:1px solid var(--line);
@@ -68,7 +68,7 @@
   h1.display{font-size:34px; margin:6px 0 6px;}
   h2.display{font-size:20px; margin:0 0 14px;}
   p.sub{color:var(--chalk-dim); font-size:14px; margin:0 0 20px; line-height:1.5;}
-
+ 
   label{display:block; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--chalk-dim); margin:16px 0 8px;}
   label:first-of-type{margin-top:0;}
   input[type=text], input[type=number], select{
@@ -76,14 +76,14 @@
     border-radius:8px; padding:12px 14px; font-family:'Work Sans',sans-serif; font-size:15px;
   }
   input:focus, select:focus, button:focus-visible, .choice:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
-
+ 
   .choices{display:flex; gap:8px; flex-wrap:wrap;}
   .choice{
     flex:1; min-width:90px; text-align:center; padding:10px 8px; border-radius:8px;
     border:1px solid var(--line); background:var(--panel-2); cursor:pointer; font-size:13px; color:var(--chalk-dim);
   }
   .choice.active{border-color:var(--amber); color:var(--bg-deep); background:var(--amber); font-weight:600;}
-
+ 
   button.primary{
     width:100%; margin-top:24px; background:var(--coral); color:var(--chalk); border:none;
     border-radius:10px; padding:15px; font-family:'Anton',sans-serif; font-size:16px; letter-spacing:0.04em;
@@ -95,7 +95,7 @@
     width:100%; margin-top:10px; background:transparent; color:var(--chalk-dim); border:1px solid var(--line);
     border-radius:10px; padding:12px; font-family:'Work Sans',sans-serif; font-size:13px; cursor:pointer;
   }
-
+ 
   .cat-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px;}
   .cat{
     border-radius:12px; padding:16px 14px; cursor:pointer; border:1px solid var(--line);
@@ -108,14 +108,14 @@
   .cat.poids{border-left:4px solid var(--sky); grid-column:1/3;}
   .cat.mix{border-left:4px solid var(--turf-light); grid-column:1/3;}
   .cat.frigo{border-left:4px solid #8CD9A6; grid-column:1/3;}
-
+ 
   .badge-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
   .badge{
     background:var(--panel-2); border:1px solid var(--line); border-radius:20px;
     padding:6px 12px; font-size:12px; color:var(--chalk-dim);
   }
   .badge.unlocked{color:var(--bg-deep); background:var(--amber); border-color:var(--amber); font-weight:600;}
-
+ 
   .ex-item{
     padding:14px; border-radius:10px; background:var(--panel-2); border:1px solid var(--line); margin-bottom:10px;
   }
@@ -138,7 +138,55 @@
   .ex-steps.open{display:block;}
   .ex-steps ol{margin:0; padding-left:18px; font-size:13px; color:var(--chalk-dim); line-height:1.6;}
   .ex-steps li{margin-bottom:4px;}
-
+ 
+  .demo-wrap{background:var(--bg-deep); border-radius:10px; padding:8px 0 4px; margin-bottom:10px; display:flex; justify-content:center;}
+  .demo-svg{width:110px; height:130px; overflow:visible;}
+  .demo-svg .fig-head{fill:var(--amber);}
+  .demo-svg .fig-torso, .demo-svg .fig-arm-l, .demo-svg .fig-arm-r, .demo-svg .fig-leg-l, .demo-svg .fig-leg-r{
+    stroke:var(--chalk); stroke-width:6; stroke-linecap:round;
+  }
+  .demo-svg .fig-ground{stroke:var(--line); stroke-width:2;}
+  .demo-svg .figure-group{transform-origin:60px 138px;}
+  @keyframes dSquat{0%,100%{transform:translateY(0);}50%{transform:translateY(16px);}}
+  @keyframes dJump{0%,100%{transform:translateY(0);}30%{transform:translateY(6px);}55%{transform:translateY(-22px);}100%{transform:translateY(0);}}
+  @keyframes dLateral{0%,100%{transform:translateX(-14px) rotate(-4deg);}50%{transform:translateX(14px) rotate(4deg);}}
+  @keyframes dRun{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  @keyframes dHold{0%,100%{transform:scale(1);}50%{transform:scale(1.02) translateY(-2px);}}
+  @keyframes dArmsUp{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+  @keyframes dLegL{0%,100%{transform:rotate(12deg);}50%{transform:rotate(-16deg);}}
+  @keyframes dLegR{0%,100%{transform:rotate(-12deg);}50%{transform:rotate(16deg);}}
+  @keyframes dArmL{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(20deg);}}
+  @keyframes dArmR{0%,100%{transform:rotate(8deg);}50%{transform:rotate(-20deg);}}
+  @keyframes dJackArmL{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-110deg);}}
+  @keyframes dJackArmR{0%,100%{transform:rotate(0deg);}50%{transform:rotate(110deg);}}
+  @keyframes dJackLegL{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-18deg);}}
+  @keyframes dJackLegR{0%,100%{transform:rotate(0deg);}50%{transform:rotate(18deg);}}
+  .demo-squat .figure-group{animation:dSquat 1.4s ease-in-out infinite;}
+  .demo-jump .figure-group{animation:dJump 1s ease-in-out infinite;}
+  .demo-lateral .figure-group{animation:dLateral 1.2s ease-in-out infinite;}
+  .demo-run .figure-group{animation:dRun 0.45s ease-in-out infinite;}
+  .demo-run .fig-leg-l{transform-origin:60px 88px; animation:dLegL 0.45s ease-in-out infinite;}
+  .demo-run .fig-leg-r{transform-origin:60px 88px; animation:dLegR 0.45s ease-in-out infinite;}
+  .demo-run .fig-arm-l{transform-origin:60px 48px; animation:dArmR 0.45s ease-in-out infinite;}
+  .demo-run .fig-arm-r{transform-origin:60px 48px; animation:dArmL 0.45s ease-in-out infinite;}
+  .demo-hold .figure-group{animation:dHold 2s ease-in-out infinite;}
+  .demo-jack .fig-arm-l{transform-origin:60px 48px; animation:dJackArmL 1s ease-in-out infinite;}
+  .demo-jack .fig-arm-r{transform-origin:60px 48px; animation:dJackArmR 1s ease-in-out infinite;}
+  .demo-jack .fig-leg-l{transform-origin:60px 88px; animation:dJackLegL 1s ease-in-out infinite;}
+  .demo-jack .fig-leg-r{transform-origin:60px 88px; animation:dJackLegR 1s ease-in-out infinite;}
+  @keyframes dPushupTilt{0%,100%{transform:rotate(-75deg) translate(-4px,0);}50%{transform:rotate(-75deg) translate(4px,0);}}
+  .demo-pushup .figure-group{transform-origin:60px 138px; animation:dPushupTilt 1.3s ease-in-out infinite;}
+  @keyframes dDipTorso{0%,100%{transform:translateY(0);}50%{transform:translateY(10px);}}
+  @keyframes dDipArmL{0%,100%{transform:rotate(0deg);}50%{transform:rotate(35deg);}}
+  @keyframes dDipArmR{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-35deg);}}
+  .demo-dip .figure-group{animation:dDipTorso 1.1s ease-in-out infinite;}
+  .demo-dip .fig-arm-l{transform-origin:60px 48px; animation:dDipArmL 1.1s ease-in-out infinite;}
+  .demo-dip .fig-arm-r{transform-origin:60px 48px; animation:dDipArmR 1.1s ease-in-out infinite;}
+  @keyframes dSupermanLie{0%,100%{transform:rotate(80deg) translateY(0);}50%{transform:rotate(80deg) translateY(-10px);}}
+  .demo-superman .figure-group{transform-origin:60px 90px; animation:dSupermanLie 1.6s ease-in-out infinite;}
+  @keyframes dPlankLie{0%,100%{transform:rotate(78deg) translateY(0);}50%{transform:rotate(78deg) translateY(-2px);}}
+  .demo-plank .figure-group{transform-origin:60px 90px; animation:dPlankLie 2.4s ease-in-out infinite;}
+ 
   .scoreboard{
     background:var(--bg-deep); border:1px solid var(--line); border-radius:12px; padding:24px;
     text-align:center; margin:8px 0 20px;
@@ -147,15 +195,15 @@
   .scoreboard .of{font-size:11px; color:var(--chalk-dim); letter-spacing:0.1em; text-transform:uppercase; margin-top:6px;}
   .scoreboard .set-of{font-size:12px; color:var(--sky); margin-top:8px; letter-spacing:0.06em; text-transform:uppercase;}
   .scoreboard.resting .digits{color:var(--sky);}
-
+ 
   .progress-bar{height:6px; background:var(--panel-2); border-radius:4px; overflow:hidden; margin-bottom:20px;}
   .progress-bar .fill{height:100%; background:var(--turf-light); transition:width 0.3s;}
-
+ 
   .center{text-align:center;}
   .big-emoji{font-size:44px; margin-bottom:8px;}
   .hidden{display:none;}
   .top-link{background:none; border:none; color:var(--chalk-dim); font-size:13px; cursor:pointer; padding:0;}
-
+ 
   .fridge-drop{
     border:2px dashed var(--line); border-radius:12px; padding:26px 16px; text-align:center; cursor:pointer;
     color:var(--chalk-dim); font-size:13px; margin-top:6px;
@@ -176,43 +224,43 @@
 </head>
 <body>
 <div class="wrap" id="app"></div>
-
+ 
 <script>
 const CATS = {
   force: {
     label:'Force', tag:'N°01 · MUSCLE', cls:'force',
     pool:[
-      {name:'Pompes', type:'reps', base:10, desc:'Dos droit, descend contrôlé', steps:['Mains au sol un peu plus larges que les épaules, corps gainé.','Descends la poitrine vers le sol en gardant le dos droit.','Repousse le sol pour remonter, sans casser les hanches.']},
-      {name:'Squats', type:'reps', base:15, desc:'Genoux dans l\'axe des pieds', steps:['Pieds largeur de hanches, dos droit, regard devant.','Descends comme pour t\'asseoir sur une chaise, genoux dans l\'axe des pieds.','Remonte en poussant sur les talons.']},
-      {name:'Fentes avant', type:'reps', base:12, desc:'6 par jambe', steps:['Debout, fais un grand pas en avant.','Descends jusqu\'à ce que les deux genoux forment un angle droit.','Repousse avec la jambe avant pour revenir debout, puis change de jambe.']},
-      {name:'Gainage planche', type:'time', base:30, desc:'Corps aligné, respire', steps:['Appui sur les avant-bras et les pointes de pieds.','Garde le corps bien droit, comme une planche, du crâne aux talons.','Contracte le ventre et respire calmement sans creuser le dos.']},
-      {name:'Dips sur chaise', type:'reps', base:10, desc:'Coudes vers l\'arrière', steps:['Assieds-toi au bord d\'une chaise, mains posées à côté des hanches.','Avance les fesses dans le vide, jambes tendues ou pliées.','Descends en pliant les coudes vers l\'arrière, puis repousse pour remonter.']},
-      {name:'Superman', type:'reps', base:12, desc:'Contracte le bas du dos', steps:['Allonge-toi sur le ventre, bras tendus devant toi.','Soulève en même temps les bras, la poitrine et les jambes du sol.','Tiens une seconde en haut puis redescends en douceur.']},
+      {name:'Pompes', type:'reps', base:10, desc:'Dos droit, descend contrôlé', steps:['Mains au sol un peu plus larges que les épaules, corps gainé.','Descends la poitrine vers le sol en gardant le dos droit.','Repousse le sol pour remonter, sans casser les hanches.'], demo:'pushup'},
+      {name:'Squats', type:'reps', base:15, desc:'Genoux dans l\'axe des pieds', steps:['Pieds largeur de hanches, dos droit, regard devant.','Descends comme pour t\'asseoir sur une chaise, genoux dans l\'axe des pieds.','Remonte en poussant sur les talons.'], demo:'squat'},
+      {name:'Fentes avant', type:'reps', base:12, desc:'6 par jambe', steps:['Debout, fais un grand pas en avant.','Descends jusqu\'à ce que les deux genoux forment un angle droit.','Repousse avec la jambe avant pour revenir debout, puis change de jambe.'], demo:'lateral'},
+      {name:'Gainage planche', type:'time', base:30, desc:'Corps aligné, respire', steps:['Appui sur les avant-bras et les pointes de pieds.','Garde le corps bien droit, comme une planche, du crâne aux talons.','Contracte le ventre et respire calmement sans creuser le dos.'], demo:'plank'},
+      {name:'Dips sur chaise', type:'reps', base:10, desc:'Coudes vers l\'arrière', steps:['Assieds-toi au bord d\'une chaise, mains posées à côté des hanches.','Avance les fesses dans le vide, jambes tendues ou pliées.','Descends en pliant les coudes vers l\'arrière, puis repousse pour remonter.'], demo:'dip'},
+      {name:'Superman', type:'reps', base:12, desc:'Contracte le bas du dos', steps:['Allonge-toi sur le ventre, bras tendus devant toi.','Soulève en même temps les bras, la poitrine et les jambes du sol.','Tiens une seconde en haut puis redescends en douceur.'], demo:'superman'},
       {name:'Squats sautés', type:'reps', base:10, desc:'Réception souple', steps:['Descends en squat comme pour un squat classique.','Explose vers le haut en sautant, bras qui aident l\'élan.','Réceptionne-toi en souplesse, genoux légèrement fléchis.'], demo:'jump'},
     ]
   },
   cardio: {
     label:'Vitesse & endurance', tag:'N°02 · CARDIO', cls:'cardio',
     pool:[
-      {name:'Montées de genoux', type:'time', base:30, desc:'Rythme rapide, sur place', steps:['Debout, cours sur place en levant les genoux à hauteur de hanches.','Garde un rythme rapide et régulier.','Utilise les bras pour t\'aider à accélérer la cadence.']},
-      {name:'Jumping jacks', type:'time', base:30, desc:'Amplitude complète', steps:['Debout, jambes serrées, bras le long du corps.','Saute en écartant les jambes et en levant les bras au-dessus de la tête.','Reviens à la position de départ en un seul saut, et recommence.']},
-      {name:'Sprint sur place', type:'time', base:20, desc:'Vitesse maximale', steps:['Position légèrement penchée en avant, comme au départ d\'une course.','Cours sur place le plus vite possible en martelant le sol.','Garde les bras actifs, pliés à 90 degrés.']},
-      {name:'Talons-fesses', type:'time', base:30, desc:'Cadence rapide', steps:['Cours sur place en ramenant les talons vers les fesses.','Garde le buste droit et les bras qui accompagnent le mouvement.','Accélère la cadence progressivement.']},
+      {name:'Montées de genoux', type:'time', base:30, desc:'Rythme rapide, sur place', steps:['Debout, cours sur place en levant les genoux à hauteur de hanches.','Garde un rythme rapide et régulier.','Utilise les bras pour t\'aider à accélérer la cadence.'], demo:'run'},
+      {name:'Jumping jacks', type:'time', base:30, desc:'Amplitude complète', steps:['Debout, jambes serrées, bras le long du corps.','Saute en écartant les jambes et en levant les bras au-dessus de la tête.','Reviens à la position de départ en un seul saut, et recommence.'], demo:'jack'},
+      {name:'Sprint sur place', type:'time', base:20, desc:'Vitesse maximale', steps:['Position légèrement penchée en avant, comme au départ d\'une course.','Cours sur place le plus vite possible en martelant le sol.','Garde les bras actifs, pliés à 90 degrés.'], demo:'run'},
+      {name:'Talons-fesses', type:'time', base:30, desc:'Cadence rapide', steps:['Cours sur place en ramenant les talons vers les fesses.','Garde le buste droit et les bras qui accompagnent le mouvement.','Accélère la cadence progressivement.'], demo:'run'},
       {name:'Corde à sauter (mimée)', type:'time', base:40, desc:'Petits sauts réguliers', steps:['Mime les mains qui font tourner une corde, poignets qui tournent.','Fais de petits sauts réguliers sur la pointe des pieds.','Garde un rythme régulier, sans t\'arrêter.'], demo:'jump'},
-      {name:'Burpees', type:'reps', base:8, desc:'Enchaîne sans t\'arrêter', steps:['Depuis debout, pose les mains au sol et envoie les pieds en arrière (position planche).','Fais une pompe si possible, puis ramène les pieds vers les mains.','Saute en l\'air bras tendus vers le ciel, puis recommence.']},
-      {name:'Skater jumps', type:'reps', base:14, desc:'7 de chaque côté', steps:['Debout, pousse sur une jambe pour sauter latéralement sur l\'autre.','Croise légèrement la jambe libre derrière toi en atterrissant.','Enchaîne d\'un côté puis de l\'autre, comme un patineur.'], demo:'jump'},
+      {name:'Burpees', type:'reps', base:8, desc:'Enchaîne sans t\'arrêter', steps:['Depuis debout, pose les mains au sol et envoie les pieds en arrière (position planche).','Fais une pompe si possible, puis ramène les pieds vers les mains.','Saute en l\'air bras tendus vers le ciel, puis recommence.'], demo:'jump'},
+      {name:'Skater jumps', type:'reps', base:14, desc:'7 de chaque côté', steps:['Debout, pousse sur une jambe pour sauter latéralement sur l\'autre.','Croise légèrement la jambe libre derrière toi en atterrissant.','Enchaîne d\'un côté puis de l\'autre, comme un patineur.'], demo:'lateral'},
     ]
   },
   poids: {
     label:'Perte de poids', tag:'N°03 · ENDURANCE', cls:'poids',
     pool:[
-      {name:'Mountain climbers', type:'time', base:30, desc:'Genoux vers la poitrine, rythme soutenu', steps:['Position de planche, mains sous les épaules.','Ramène un genou vers la poitrine, puis change de jambe rapidement.','Garde le dos plat et le rythme soutenu, comme si tu courais à l\'horizontale.']},
-      {name:'Jumping jacks', type:'time', base:35, desc:'Amplitude complète, sans pause', steps:['Debout, jambes serrées, bras le long du corps.','Saute en écartant les jambes et en levant les bras au-dessus de la tête.','Reviens à la position de départ en un seul saut, sans pause.']},
-      {name:'Squats pulse', type:'time', base:30, desc:'Petits rebonds en bas du squat', steps:['Descends en position de squat, cuisses parallèles au sol.','Reste en bas et fais de petits rebonds réguliers.','Garde le dos droit et les genoux dans l\'axe des pieds.']},
+      {name:'Mountain climbers', type:'time', base:30, desc:'Genoux vers la poitrine, rythme soutenu', steps:['Position de planche, mains sous les épaules.','Ramène un genou vers la poitrine, puis change de jambe rapidement.','Garde le dos plat et le rythme soutenu, comme si tu courais à l\'horizontale.'], demo:'run'},
+      {name:'Jumping jacks', type:'time', base:35, desc:'Amplitude complète, sans pause', steps:['Debout, jambes serrées, bras le long du corps.','Saute en écartant les jambes et en levant les bras au-dessus de la tête.','Reviens à la position de départ en un seul saut, sans pause.'], demo:'jack'},
+      {name:'Squats pulse', type:'time', base:30, desc:'Petits rebonds en bas du squat', steps:['Descends en position de squat, cuisses parallèles au sol.','Reste en bas et fais de petits rebonds réguliers.','Garde le dos droit et les genoux dans l\'axe des pieds.'], demo:'squat'},
       {name:'Fentes sautées', type:'reps', base:12, desc:'Alterne les jambes en l\'air', steps:['Place-toi en fente, une jambe devant, une derrière.','Saute et change de jambe en l\'air.','Réceptionne-toi en souplesse directement dans la fente inversée.'], demo:'jump'},
-      {name:'Montées de genoux', type:'time', base:35, desc:'Rythme rapide, sur place', steps:['Debout, cours sur place en levant les genoux à hauteur de hanches.','Garde un rythme rapide et régulier.','Utilise les bras pour t\'aider à accélérer la cadence.']},
-      {name:'Burpees', type:'reps', base:8, desc:'Enchaîne sans t\'arrêter', steps:['Depuis debout, pose les mains au sol et envoie les pieds en arrière (position planche).','Fais une pompe si possible, puis ramène les pieds vers les mains.','Saute en l\'air bras tendus vers le ciel, puis recommence.']},
-      {name:'Gainage dynamique', type:'time', base:30, desc:'Planche, touche l\'épaule opposée', steps:['Position de planche, mains sous les épaules, corps aligné.','Touche ton épaule gauche avec la main droite, puis inversement.','Garde le bassin stable, sans le faire tourner.']},
+      {name:'Montées de genoux', type:'time', base:35, desc:'Rythme rapide, sur place', steps:['Debout, cours sur place en levant les genoux à hauteur de hanches.','Garde un rythme rapide et régulier.','Utilise les bras pour t\'aider à accélérer la cadence.'], demo:'run'},
+      {name:'Burpees', type:'reps', base:8, desc:'Enchaîne sans t\'arrêter', steps:['Depuis debout, pose les mains au sol et envoie les pieds en arrière (position planche).','Fais une pompe si possible, puis ramène les pieds vers les mains.','Saute en l\'air bras tendus vers le ciel, puis recommence.'], demo:'jump'},
+      {name:'Gainage dynamique', type:'time', base:30, desc:'Planche, touche l\'épaule opposée', steps:['Position de planche, mains sous les épaules, corps aligné.','Touche ton épaule gauche avec la main droite, puis inversement.','Garde le bassin stable, sans le faire tourner.'], demo:'plank'},
     ]
   }
 };
@@ -223,9 +271,9 @@ const BADGES = [
   {id:'ten', label:'10 séances', need:s=>s.totalSessions>=10},
 ];
 const REST_SECONDS = 15;
-
+ 
 let profile=null, stats=null, currentSession=null, timerHandle=null;
-
+ 
 const hasClaudeStorage = typeof window.storage !== 'undefined';
 async function storageGet(key){
   if(hasClaudeStorage){
@@ -240,7 +288,7 @@ async function storageSet(key, value){
     try{ localStorage.setItem(key, value); }catch(e){}
   }
 }
-
+ 
 async function loadState(){
   try{ const p = await storageGet('profile'); profile = p ? JSON.parse(p) : null; }
   catch(e){ profile = null; }
@@ -250,17 +298,31 @@ async function loadState(){
 }
 async function saveProfile(){ await storageSet('profile', JSON.stringify(profile)); }
 async function saveStats(){ await storageSet('stats', JSON.stringify(stats)); }
-
+ 
 function todayStr(){ return new Date().toISOString().slice(0,10); }
-
+ 
 function el(html){ const d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstElementChild; }
-
+ 
+function renderDemo(type){
+  return `<div class="demo-wrap"><svg viewBox="0 0 120 150" class="demo-svg demo-${type||'hold'}">
+    <line class="fig-ground" x1="20" y1="140" x2="100" y2="140"/>
+    <g class="figure-group">
+      <circle class="fig-head" cx="60" cy="24" r="11"/>
+      <line class="fig-torso" x1="60" y1="35" x2="60" y2="88"/>
+      <line class="fig-arm-l" x1="60" y1="48" x2="34" y2="70"/>
+      <line class="fig-arm-r" x1="60" y1="48" x2="86" y2="70"/>
+      <line class="fig-leg-l" x1="60" y1="88" x2="42" y2="138"/>
+      <line class="fig-leg-r" x1="60" y1="88" x2="78" y2="138"/>
+    </g>
+  </svg></div>`;
+}
+ 
 function render(node){ const app=document.getElementById('app'); app.innerHTML=''; app.appendChild(node); }
-
+ 
 function levelMult(niveau){ return niveau==='debutant'?0.7:niveau==='avance'?1.3:1; }
 function exCount(temps){ return temps==='15'?4:temps==='45'?8:6; }
 function setsForNiveau(niveau){ return niveau==='debutant'?2:niveau==='avance'?4:3; }
-
+ 
 let audioCtx=null;
 function playChime(big){
   try{
@@ -284,7 +346,7 @@ function playChime(big){
   }catch(e){}
   if(navigator.vibrate){ try{ navigator.vibrate(big?[120,60,120,60,160]:[80]); }catch(e){} }
 }
-
+ 
 function buildSession(){
   const mult = levelMult(profile.niveau);
   const n = exCount(profile.temps);
@@ -294,7 +356,7 @@ function buildSession(){
   else if(profile.objectif==='cardio') pools=[CATS.cardio.pool];
   else if(profile.objectif==='poids') pools=[CATS.poids.pool];
   else pools=[CATS.force.pool, CATS.cardio.pool, CATS.poids.pool];
-
+ 
   let all=[];
   pools.forEach(p=>all=all.concat(p));
   for(let i=all.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [all[i],all[j]]=[all[j],all[i]]; }
@@ -304,7 +366,7 @@ function buildSession(){
   });
   return picked;
 }
-
+ 
 function screenOnboarding(){
   const state = {age:'', niveau:'intermediaire', temps:'30', objectif:'mix', sport:''};
   const wrap = el(`<div>
@@ -312,27 +374,27 @@ function screenOnboarding(){
     <div class="card">
       <h1 class="display">Avant le coup d'envoi</h1>
       <p class="sub">Réponds à ces quelques questions pour que ton programme te corresponde.</p>
-
+ 
       <label for="age">Ton âge</label>
       <input type="number" id="age" min="8" max="18" placeholder="Ex : 13">
-
+ 
       <label for="sport">Ton sport (optionnel)</label>
       <input type="text" id="sport" placeholder="Foot, basket, natation...">
-
+ 
       <label>Ton niveau</label>
       <div class="choices" id="niveau-choices">
         <div class="choice" data-v="debutant">Débutant</div>
         <div class="choice active" data-v="intermediaire">Intermédiaire</div>
         <div class="choice" data-v="avance">Avancé</div>
       </div>
-
+ 
       <label>Temps par séance</label>
       <div class="choices" id="temps-choices">
         <div class="choice" data-v="15">15 min</div>
         <div class="choice active" data-v="30">30 min</div>
         <div class="choice" data-v="45">45 min</div>
       </div>
-
+ 
       <label>Ton objectif</label>
       <div class="choices" id="objectif-choices">
         <div class="choice" data-v="force">Muscle</div>
@@ -340,11 +402,11 @@ function screenOnboarding(){
         <div class="choice" data-v="poids">Perte de poids</div>
         <div class="choice active" data-v="mix">Les trois</div>
       </div>
-
+ 
       <button class="primary" id="start-btn">Créer mon programme</button>
     </div>
   </div>`);
-
+ 
   function wireChoices(id, key){
     wrap.querySelector('#'+id).addEventListener('click', (ev)=>{
       const c = ev.target.closest('.choice'); if(!c) return;
@@ -356,7 +418,7 @@ function screenOnboarding(){
   wireChoices('niveau-choices','niveau');
   wireChoices('temps-choices','temps');
   wireChoices('objectif-choices','objectif');
-
+ 
   wrap.querySelector('#start-btn').addEventListener('click', async ()=>{
     const age = wrap.querySelector('#age').value;
     state.age = age? parseInt(age):null;
@@ -365,10 +427,10 @@ function screenOnboarding(){
     await saveProfile();
     render(screenDashboard());
   });
-
+ 
   return wrap;
 }
-
+ 
 function screenDashboard(){
   const unlocked = stats.badges;
   const wrap = el(`<div>
@@ -395,7 +457,7 @@ function screenDashboard(){
     </div>
     <button class="ghost" id="edit-profile">Modifier mon profil</button>
   </div>`);
-
+ 
   function startWith(objectif){
     const savedObjectif = profile.objectif;
     profile.objectif = objectif;
@@ -409,10 +471,10 @@ function screenDashboard(){
   wrap.querySelector('#go-mix').addEventListener('click', ()=>startWith('mix'));
   wrap.querySelector('#go-frigo').addEventListener('click', ()=>render(screenFridge()));
   wrap.querySelector('#edit-profile').addEventListener('click', ()=>render(screenOnboarding()));
-
+ 
   return wrap;
 }
-
+ 
 function screenSession(){
   const wrap = el(`<div>
     <div class="topbar">
@@ -426,7 +488,7 @@ function screenSession(){
     </div>
     <button class="primary hidden" id="finish-btn">Terminer la séance</button>
   </div>`);
-
+ 
   function refreshList(){
     const list = wrap.querySelector('#ex-list');
     list.innerHTML = currentSession.map((e,i)=>{
@@ -444,6 +506,7 @@ function screenSession(){
         </div>
         <button class="ex-info-btn" data-info="${i}"><span>i</span>Voir l'exemple</button>
         <div class="ex-steps" data-steps="${i}">
+          ${renderDemo(e.demo)}
           <ol>${e.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
         </div>
       </div>`;
@@ -473,7 +536,7 @@ function screenSession(){
     wrap.querySelector('#prog-fill').style.width = Math.round(doneCount/currentSession.length*100)+'%';
     wrap.querySelector('#finish-btn').classList.toggle('hidden', doneCount===0);
   }
-
+ 
   function openTimer(i){
     const ex = currentSession[i];
     let setIndex = ex.doneSets+1;
@@ -494,7 +557,7 @@ function screenSession(){
     const sb = overlay.querySelector('#sb');
     const setOf = overlay.querySelector('.set-of');
     const btn = overlay.querySelector('#timer-toggle');
-
+ 
     function tick(){
       remaining--;
       digits.textContent = remaining;
@@ -531,14 +594,14 @@ function screenSession(){
         }
       }
     }
-
+ 
     btn.addEventListener('click', ()=>{
       if(running){ clearInterval(timerHandle); running=false; btn.textContent='Reprendre'; return; }
       running=true; btn.textContent='Pause';
       timerHandle = setInterval(tick,1000);
     });
   }
-
+ 
   wrap.querySelector('#back-btn').addEventListener('click', ()=>{ clearInterval(timerHandle); render(screenDashboard()); });
   wrap.querySelector('#finish-btn').addEventListener('click', async ()=>{
     clearInterval(timerHandle);
@@ -555,11 +618,11 @@ function screenSession(){
     await saveStats();
     render(screenRecap());
   });
-
+ 
   refreshList();
   return wrap;
 }
-
+ 
 function screenRecap(){
   const newBadges = BADGES.filter(b=>stats.badges.includes(b.id));
   const wrap = el(`<div class="card center">
@@ -574,103 +637,112 @@ function screenRecap(){
   wrap.querySelector('#dash-btn').addEventListener('click', ()=>render(screenDashboard()));
   return wrap;
 }
-
-function fileToBase64(file){
-  return new Promise((resolve, reject)=>{
-    const r = new FileReader();
-    r.onload = ()=> resolve(r.result.split(',')[1]);
-    r.onerror = ()=> reject(new Error('Lecture impossible'));
-    r.readAsDataURL(file);
-  });
+ 
+const VEGGIES = ['Tomate','Concombre','Courgette','Carotte','Poivron','Brocoli','Épinard','Oignon'];
+const FRUITS = ['Pomme','Banane','Orange','Fraise','Citron'];
+const FOOD_CATEGORIES = [
+  {label:'Légumes', items:VEGGIES},
+  {label:'Fruits', items:FRUITS},
+  {label:'Féculents', items:['Pâtes','Riz','Pain','Pommes de terre','Quinoa']},
+  {label:'Protéines', items:['Œufs','Poulet','Thon','Jambon','Fromage','Yaourt','Lentilles']},
+  {label:'Placard', items:["Huile d'olive",'Beurre','Lait','Farine']},
+];
+const RECIPES = [
+  {nom:'Omelette aux légumes', need:[['Œufs'], VEGGIES], desc:'Bats les œufs, fais revenir les légumes coupés en dés, verse les œufs par-dessus et cuis à la poêle jusqu\'à ce que ce soit pris.'},
+  {nom:'Pâtes au thon et tomate', need:[['Pâtes'],['Thon'],['Tomate']], desc:'Fais cuire les pâtes, prépare une sauce avec le thon émietté et la tomate coupée, mélange avec un filet d\'huile d\'olive.'},
+  {nom:'Riz sauté aux légumes et œuf', need:[['Riz'], VEGGIES, ['Œufs']], desc:'Fais revenir les légumes, ajoute le riz déjà cuit, pousse sur le côté et casse un œuf pour le mélanger au riz chaud.'},
+  {nom:'Wrap au poulet', need:[['Pain'],['Poulet']], desc:'Coupe le poulet cuit en lamelles, ajoute des légumes crus si tu en as, et roule le tout dans le pain ou une tortilla.'},
+  {nom:'Salade de poulet', need:[['Poulet'], VEGGIES], desc:'Coupe le poulet cuit en dés, mélange avec les légumes crus coupés et un filet d\'huile d\'olive.'},
+  {nom:'Bol yaourt et fruits', need:[['Yaourt'], FRUITS], desc:'Coupe les fruits en morceaux et mélange-les avec le yaourt, un vrai dessert healthy.'},
+  {nom:'Salade de fruits', needCategory:{list:FRUITS, min:2}, desc:'Coupe les fruits en morceaux et mélange-les dans un bol, avec un filet de citron pour éviter qu\'ils noircissent.'},
+  {nom:'Soupe de légumes', needCategory:{list:VEGGIES, min:3}, desc:'Coupe les légumes, fais-les cuire dans de l\'eau avec un peu de sel jusqu\'à ce qu\'ils soient tendres, mixe si tu aimes que ce soit lisse.'},
+  {nom:'Pommes de terre rôties au poulet', need:[['Pommes de terre'],['Poulet']], desc:'Coupe les pommes de terre en morceaux, fais-les cuire au four avec un peu d\'huile, sers avec le poulet cuit.'},
+  {nom:'Lentilles aux légumes', need:[['Lentilles'], VEGGIES], desc:'Fais cuire les lentilles, ajoute les légumes coupés en dés et un filet d\'huile d\'olive.'},
+  {nom:'Sandwich jambon-fromage', need:[['Pain'],['Jambon'],['Fromage']], desc:'Assemble le pain, le jambon et le fromage, et fais dorer au four ou à la poêle si tu aimes que ce soit chaud.'},
+  {nom:'Quinoa aux légumes', need:[['Quinoa'], VEGGIES], desc:'Fais cuire le quinoa, ajoute les légumes coupés en dés et un filet d\'huile d\'olive, avec un peu de sel.'},
+];
+ 
+function matchScore(r, sel){
+  if(r.need){
+    const matched = r.need.filter(group=>group.some(item=>sel.has(item))).length;
+    return {full: matched===r.need.length, score: matched, total: r.need.length};
+  }
+  if(r.needCategory){
+    const matched = r.needCategory.list.filter(item=>sel.has(item)).length;
+    return {full: matched>=r.needCategory.min, score: matched, total: r.needCategory.min};
+  }
+  return {full:false, score:0, total:1};
 }
-
+ 
 function screenFridge(){
+  const selected = new Set();
   const wrap = el(`<div>
     <div class="topbar">
       <button class="top-link" id="back-btn">← Quitter</button>
     </div>
     <div class="card">
-      <h2 class="display">Scanne ton frigo</h2>
-      <p class="sub">Prends une photo de ton frigo ou de tes placards, et reçois des idées de recettes saines avec ce que tu as sous la main.</p>
-      <label class="fridge-drop" id="drop-zone">
-        <span class="fridge-emoji">📷</span>
-        Appuie ici pour prendre ou choisir une photo
-        <input type="file" accept="image/*" capture="environment" id="fridge-input" style="display:none;">
-      </label>
-      <img id="fridge-preview" class="fridge-preview">
-      <div id="fridge-result"></div>
+      <h2 class="display">Mon frigo</h2>
+      <p class="sub">Coche ce que tu as sous la main, et reçois des idées de recettes saines. Aucune connexion ni compte nécessaire.</p>
+      <div id="food-cats"></div>
+      <button class="primary" id="find-recipes-btn">Trouver des recettes</button>
     </div>
+    <div id="fridge-result"></div>
   </div>`);
-
-  const input = wrap.querySelector('#fridge-input');
-  const dropZone = wrap.querySelector('#drop-zone');
-  const preview = wrap.querySelector('#fridge-preview');
-  const resultBox = wrap.querySelector('#fridge-result');
-
-  dropZone.addEventListener('click', (ev)=>{ ev.preventDefault(); input.click(); });
-
-  input.addEventListener('change', async ()=>{
-    const file = input.files && input.files[0];
-    if(!file) return;
-    preview.src = URL.createObjectURL(file);
-    preview.classList.add('show');
-    resultBox.innerHTML = `<div class="spinner"></div><p class="sub center">Analyse de la photo en cours...</p>`;
-    try{
-      const base64 = await fileToBase64(file);
-      const mediaType = file.type || 'image/jpeg';
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({
-          model:'claude-sonnet-4-6',
-          max_tokens:1000,
-          messages:[{
-            role:'user',
-            content:[
-              {type:'image', source:{type:'base64', media_type:mediaType, data:base64}},
-              {type:'text', text:'Tu es un coach nutrition pour un jeune sportif. Regarde cette photo de frigo/placard et identifie les aliments visibles. Propose ensuite 3 recettes saines et simples réalisables avec ces aliments (complète avec des bases courantes comme sel, huile, œufs si besoin). Réponds UNIQUEMENT avec un JSON valide, sans texte autour, sans balises markdown, au format exact : {"aliments_detectes": ["...", "..."], "recettes": [{"nom": "...", "description": "...", "ingredients": "..."}]}'}
-            ]
-          }]
-        })
-      });
-      const data = await response.json();
-      const textBlock = (data.content||[]).map(b=>b.text||'').join('');
-      const clean = textBlock.replace(/```json|```/g,'').trim();
-      const parsed = JSON.parse(clean);
-      renderRecipes(parsed);
-    }catch(err){
-      resultBox.innerHTML = `<p class="sub center">Impossible d'analyser la photo pour le moment. Réessaie avec une photo bien éclairée.</p>`;
-    }
+ 
+  const catsBox = wrap.querySelector('#food-cats');
+  catsBox.innerHTML = FOOD_CATEGORIES.map(cat=>`
+    <label style="margin-top:16px;">${cat.label}</label>
+    <div class="choices" style="flex-wrap:wrap;">
+      ${cat.items.map(item=>`<div class="choice food-choice" data-item="${item}" style="min-width:auto; flex:none; padding:8px 12px;">${item}</div>`).join('')}
+    </div>
+  `).join('');
+ 
+  catsBox.querySelectorAll('.food-choice').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      const item = chip.dataset.item;
+      if(selected.has(item)){ selected.delete(item); chip.classList.remove('active'); }
+      else{ selected.add(item); chip.classList.add('active'); }
+    });
   });
-
-  function renderRecipes(parsed){
-    const detected = (parsed.aliments_detectes||[]).join(', ');
-    const recipes = parsed.recettes||[];
-    resultBox.innerHTML = `
-      ${detected? `<p class="sub" style="margin-bottom:6px;"><strong style="color:var(--chalk);">Repéré dans ta photo :</strong> ${detected}</p>` : ''}
-      ${recipes.map(r=>`
-        <div class="recipe-card">
-          <h3>${r.nom||'Recette'}</h3>
-          <p>${r.description||''}</p>
-          <p class="ing">Ingrédients : ${r.ingredients||''}</p>
-        </div>
-      `).join('')}
-      <button class="ghost" id="rescan-btn">Scanner une autre photo</button>
-    `;
-    const rescan = resultBox.querySelector('#rescan-btn');
-    if(rescan) rescan.addEventListener('click', ()=>{ preview.classList.remove('show'); resultBox.innerHTML=''; input.value=''; });
-  }
-
+ 
+  wrap.querySelector('#find-recipes-btn').addEventListener('click', ()=>{
+    const resultBox = wrap.querySelector('#fridge-result');
+    if(selected.size===0){
+      resultBox.innerHTML = `<div class="card"><p class="sub center">Coche au moins un aliment pour voir des idées de recettes.</p></div>`;
+      return;
+    }
+    const scored = RECIPES.map(r=>({r, ...matchScore(r, selected)}));
+    const full = scored.filter(s=>s.full);
+    const partial = scored.filter(s=>!s.full && s.score>0).sort((a,b)=> (b.score/b.total)-(a.score/a.total)).slice(0,3);
+ 
+    let html = '<div class="card">';
+    if(full.length){
+      html += `<h2 class="display" style="font-size:18px;">Tu peux faire :</h2>`;
+      html += full.map(s=>`<div class="recipe-card"><h3>${s.r.nom}</h3><p>${s.r.desc}</p></div>`).join('');
+    } else {
+      html += `<p class="sub center">Pas encore de recette complète avec ce que tu as coché. Voici ce qui s'en rapproche le plus :</p>`;
+    }
+    if(partial.length){
+      html += `<h2 class="display" style="font-size:16px; margin-top:${full.length?'20px':'6px'};">Presque prêtes (avec un ingrédient de plus)</h2>`;
+      html += partial.map(s=>`<div class="recipe-card" style="opacity:0.75;"><h3>${s.r.nom}</h3><p>${s.r.desc}</p></div>`).join('');
+    }
+    if(!full.length && !partial.length){
+      html += `<p class="sub center">Essaie de cocher d'autres aliments pour voir apparaître des recettes.</p>`;
+    }
+    html += '</div>';
+    resultBox.innerHTML = html;
+  });
+ 
   wrap.querySelector('#back-btn').addEventListener('click', ()=>render(screenDashboard()));
   return wrap;
 }
-
+ 
 (async function init(){
   render(el('<div class="center" style="padding-top:80px; color:var(--chalk-dim);">Chargement...</div>'));
   await loadState();
   render(profile ? screenDashboard() : screenOnboarding());
 })();
-
+ 
 if('serviceWorker' in navigator){
   window.addEventListener('load', ()=>{
     navigator.serviceWorker.register('sw.js').catch(()=>{});
@@ -679,3 +751,4 @@ if('serviceWorker' in navigator){
 </script>
 </body>
 </html>
+ 
