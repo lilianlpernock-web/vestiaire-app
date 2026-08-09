@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -139,54 +139,17 @@
   .ex-steps ol{margin:0; padding-left:18px; font-size:13px; color:var(--chalk-dim); line-height:1.6;}
   .ex-steps li{margin-bottom:4px;}
  
-  .demo-wrap{background:var(--bg-deep); border-radius:10px; padding:8px 0 4px; margin-bottom:10px; display:flex; justify-content:center;}
-  .demo-svg{width:110px; height:130px; overflow:visible;}
-  .demo-svg .fig-head{fill:var(--amber);}
-  .demo-svg .fig-torso, .demo-svg .fig-arm-l, .demo-svg .fig-arm-r, .demo-svg .fig-leg-l, .demo-svg .fig-leg-r{
-    stroke:var(--chalk); stroke-width:6; stroke-linecap:round;
-  }
-  .demo-svg .fig-ground{stroke:var(--line); stroke-width:2;}
-  .demo-svg .figure-group{transform-origin:60px 138px;}
-  @keyframes dSquat{0%,100%{transform:translateY(0);}50%{transform:translateY(16px);}}
-  @keyframes dJump{0%,100%{transform:translateY(0);}30%{transform:translateY(6px);}55%{transform:translateY(-22px);}100%{transform:translateY(0);}}
-  @keyframes dLateral{0%,100%{transform:translateX(-14px) rotate(-4deg);}50%{transform:translateX(14px) rotate(4deg);}}
-  @keyframes dRun{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-  @keyframes dHold{0%,100%{transform:scale(1);}50%{transform:scale(1.02) translateY(-2px);}}
-  @keyframes dArmsUp{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
-  @keyframes dLegL{0%,100%{transform:rotate(12deg);}50%{transform:rotate(-16deg);}}
-  @keyframes dLegR{0%,100%{transform:rotate(-12deg);}50%{transform:rotate(16deg);}}
-  @keyframes dArmL{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(20deg);}}
-  @keyframes dArmR{0%,100%{transform:rotate(8deg);}50%{transform:rotate(-20deg);}}
-  @keyframes dJackArmL{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-110deg);}}
-  @keyframes dJackArmR{0%,100%{transform:rotate(0deg);}50%{transform:rotate(110deg);}}
-  @keyframes dJackLegL{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-18deg);}}
-  @keyframes dJackLegR{0%,100%{transform:rotate(0deg);}50%{transform:rotate(18deg);}}
-  .demo-squat .figure-group{animation:dSquat 1.4s ease-in-out infinite;}
-  .demo-jump .figure-group{animation:dJump 1s ease-in-out infinite;}
-  .demo-lateral .figure-group{animation:dLateral 1.2s ease-in-out infinite;}
-  .demo-run .figure-group{animation:dRun 0.45s ease-in-out infinite;}
-  .demo-run .fig-leg-l{transform-origin:60px 88px; animation:dLegL 0.45s ease-in-out infinite;}
-  .demo-run .fig-leg-r{transform-origin:60px 88px; animation:dLegR 0.45s ease-in-out infinite;}
-  .demo-run .fig-arm-l{transform-origin:60px 48px; animation:dArmR 0.45s ease-in-out infinite;}
-  .demo-run .fig-arm-r{transform-origin:60px 48px; animation:dArmL 0.45s ease-in-out infinite;}
-  .demo-hold .figure-group{animation:dHold 2s ease-in-out infinite;}
-  .demo-jack .fig-arm-l{transform-origin:60px 48px; animation:dJackArmL 1s ease-in-out infinite;}
-  .demo-jack .fig-arm-r{transform-origin:60px 48px; animation:dJackArmR 1s ease-in-out infinite;}
-  .demo-jack .fig-leg-l{transform-origin:60px 88px; animation:dJackLegL 1s ease-in-out infinite;}
-  .demo-jack .fig-leg-r{transform-origin:60px 88px; animation:dJackLegR 1s ease-in-out infinite;}
-  @keyframes dPushupTilt{0%,100%{transform:rotate(-75deg) translate(-4px,0);}50%{transform:rotate(-75deg) translate(4px,0);}}
-  .demo-pushup .figure-group{transform-origin:60px 138px; animation:dPushupTilt 1.3s ease-in-out infinite;}
-  @keyframes dDipTorso{0%,100%{transform:translateY(0);}50%{transform:translateY(10px);}}
-  @keyframes dDipArmL{0%,100%{transform:rotate(0deg);}50%{transform:rotate(35deg);}}
-  @keyframes dDipArmR{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-35deg);}}
-  .demo-dip .figure-group{animation:dDipTorso 1.1s ease-in-out infinite;}
-  .demo-dip .fig-arm-l{transform-origin:60px 48px; animation:dDipArmL 1.1s ease-in-out infinite;}
-  .demo-dip .fig-arm-r{transform-origin:60px 48px; animation:dDipArmR 1.1s ease-in-out infinite;}
-  @keyframes dSupermanLie{0%,100%{transform:rotate(80deg) translateY(0);}50%{transform:rotate(80deg) translateY(-10px);}}
-  .demo-superman .figure-group{transform-origin:60px 90px; animation:dSupermanLie 1.6s ease-in-out infinite;}
-  @keyframes dPlankLie{0%,100%{transform:rotate(78deg) translateY(0);}50%{transform:rotate(78deg) translateY(-2px);}}
-  .demo-plank .figure-group{transform-origin:60px 90px; animation:dPlankLie 2.4s ease-in-out infinite;}
- 
+  .demo-wrap{background:var(--bg-deep); border-radius:10px; padding:10px 0 8px; margin-bottom:10px; display:flex; flex-direction:column; align-items:center;}
+  .demo-label{font-family:'Roboto Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--chalk-dim); margin-bottom:6px;}
+  .demo-svg{width:150px; height:159px; overflow:visible;}
+  .rig .seg-torso{stroke:var(--chalk); stroke-width:7; stroke-linecap:round;}
+  .rig .seg-limb{stroke:var(--turf-light); stroke-width:6; stroke-linecap:round;}
+  .rig .seg-arm{stroke:var(--amber); stroke-width:5; stroke-linecap:round;}
+  .rig .seg-foot{stroke:var(--chalk-dim); stroke-width:4; stroke-linecap:round;}
+  .rig .joint{fill:var(--bg-deep); stroke:var(--chalk); stroke-width:2;}
+  .rig .head{fill:var(--amber);}
+  .rig .ground-line{stroke:var(--line); stroke-width:2; stroke-dasharray:4 3;}
+
   .scoreboard{
     background:var(--bg-deep); border:1px solid var(--line); border-radius:12px; padding:24px;
     text-align:center; margin:8px 0 20px;
@@ -232,7 +195,7 @@ const CATS = {
     pool:[
       {name:'Pompes', type:'reps', base:10, desc:'Dos droit, descend contrôlé', steps:['Mains au sol un peu plus larges que les épaules, corps gainé.','Descends la poitrine vers le sol en gardant le dos droit.','Repousse le sol pour remonter, sans casser les hanches.'], demo:'pushup'},
       {name:'Squats', type:'reps', base:15, desc:'Genoux dans l\'axe des pieds', steps:['Pieds largeur de hanches, dos droit, regard devant.','Descends comme pour t\'asseoir sur une chaise, genoux dans l\'axe des pieds.','Remonte en poussant sur les talons.'], demo:'squat'},
-      {name:'Fentes avant', type:'reps', base:12, desc:'6 par jambe', steps:['Debout, fais un grand pas en avant.','Descends jusqu\'à ce que les deux genoux forment un angle droit.','Repousse avec la jambe avant pour revenir debout, puis change de jambe.'], demo:'lateral'},
+      {name:'Fentes avant', type:'reps', base:12, desc:'6 par jambe', steps:['Debout, fais un grand pas en avant.','Descends jusqu\'à ce que les deux genoux forment un angle droit.','Repousse avec la jambe avant pour revenir debout, puis change de jambe.'], demo:'lunge'},
       {name:'Gainage planche', type:'time', base:30, desc:'Corps aligné, respire', steps:['Appui sur les avant-bras et les pointes de pieds.','Garde le corps bien droit, comme une planche, du crâne aux talons.','Contracte le ventre et respire calmement sans creuser le dos.'], demo:'plank'},
       {name:'Dips sur chaise', type:'reps', base:10, desc:'Coudes vers l\'arrière', steps:['Assieds-toi au bord d\'une chaise, mains posées à côté des hanches.','Avance les fesses dans le vide, jambes tendues ou pliées.','Descends en pliant les coudes vers l\'arrière, puis repousse pour remonter.'], demo:'dip'},
       {name:'Superman', type:'reps', base:12, desc:'Contracte le bas du dos', steps:['Allonge-toi sur le ventre, bras tendus devant toi.','Soulève en même temps les bras, la poitrine et les jambes du sol.','Tiens une seconde en haut puis redescends en douceur.'], demo:'superman'},
@@ -302,21 +265,170 @@ async function saveStats(){ await storageSet('stats', JSON.stringify(stats)); }
 function todayStr(){ return new Date().toISOString().slice(0,10); }
  
 function el(html){ const d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstElementChild; }
- 
-function renderDemo(type){
-  return `<div class="demo-wrap"><svg viewBox="0 0 120 150" class="demo-svg demo-${type||'hold'}">
-    <line class="fig-ground" x1="20" y1="140" x2="100" y2="140"/>
-    <g class="figure-group">
-      <circle class="fig-head" cx="60" cy="24" r="11"/>
-      <line class="fig-torso" x1="60" y1="35" x2="60" y2="88"/>
-      <line class="fig-arm-l" x1="60" y1="48" x2="34" y2="70"/>
-      <line class="fig-arm-r" x1="60" y1="48" x2="86" y2="70"/>
-      <line class="fig-leg-l" x1="60" y1="88" x2="42" y2="138"/>
-      <line class="fig-leg-r" x1="60" y1="88" x2="78" y2="138"/>
-    </g>
-  </svg></div>`;
+
+/* ===================== DEMOS D'EXERCICES (figures articulées) ===================== */
+const REDUCE_MOTION = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function buildRig(poses, keyTimes, dur){
+  const p0 = poses[0];
+  const animated = !REDUCE_MOTION && poses.length>1;
+  const splines = poses.slice(1).map(()=>'0.4 0 0.2 1').join(';');
+  function seg(a,b,cls){
+    let anim = '';
+    if(animated){
+      const x1=poses.map(p=>p[a][0]).join(';'), y1=poses.map(p=>p[a][1]).join(';');
+      const x2=poses.map(p=>p[b][0]).join(';'), y2=poses.map(p=>p[b][1]).join(';');
+      const kt=keyTimes.join(';');
+      anim = `<animate attributeName="x1" values="${x1}" keyTimes="${kt}" dur="${dur}s" repeatCount="indefinite" calcMode="spline" keySplines="${splines}"/>
+        <animate attributeName="y1" values="${y1}" keyTimes="${kt}" dur="${dur}s" repeatCount="indefinite" calcMode="spline" keySplines="${splines}"/>
+        <animate attributeName="x2" values="${x2}" keyTimes="${kt}" dur="${dur}s" repeatCount="indefinite" calcMode="spline" keySplines="${splines}"/>
+        <animate attributeName="y2" values="${y2}" keyTimes="${kt}" dur="${dur}s" repeatCount="indefinite" calcMode="spline" keySplines="${splines}"/>`;
+    }
+    return `<line class="${cls}" x1="${p0[a][0]}" y1="${p0[a][1]}" x2="${p0[b][0]}" y2="${p0[b][1]}">${anim}</line>`;
+  }
+  function circ(name, cls, r){
+    let anim = '';
+    if(animated){
+      const cx=poses.map(p=>p[name][0]).join(';'), cy=poses.map(p=>p[name][1]).join(';');
+      const kt=keyTimes.join(';');
+      anim = `<animate attributeName="cx" values="${cx}" keyTimes="${kt}" dur="${dur}s" repeatCount="indefinite" calcMode="spline" keySplines="${splines}"/>
+        <animate attributeName="cy" values="${cy}" keyTimes="${kt}" dur="${dur}s" repeatCount="indefinite" calcMode="spline" keySplines="${splines}"/>`;
+    }
+    return `<circle class="${cls}" cx="${p0[name][0]}" cy="${p0[name][1]}" r="${r}">${anim}</circle>`;
+  }
+  return `
+    <line class="ground-line" x1="10" y1="155" x2="150" y2="155"/>
+    ${seg('ankle','toe','seg-foot')}
+    ${seg('ankle','knee','seg-limb')}
+    ${seg('knee','hip','seg-limb')}
+    ${seg('hip','shoulder','seg-torso')}
+    ${seg('shoulder','elbow','seg-arm')}
+    ${seg('elbow','hand','seg-arm')}
+    ${circ('head','head', 10)}
+    ${circ('hip','joint',3)}${circ('knee','joint',3)}${circ('shoulder','joint',3)}${circ('elbow','joint',3)}
+  `;
 }
- 
+
+// Poses de référence, vue de profil (le personnage regarde vers la droite)
+const POSE_REST = {ankle:[65,152],knee:[65,120],hip:[65,86],shoulder:[65,42],elbow:[69,64],hand:[73,84],head:[70,29],toe:[85,152]};
+
+const DEMOS = {
+  squat: {
+    label:'Squat', dur:1.6, keyTimes:[0,0.5,1],
+    poses:[POSE_REST,
+      {ankle:[65,152],knee:[81,124],hip:[62,96],shoulder:[81,56],elbow:[102,64],hand:[122,68],head:[86,43],toe:[85,152]},
+      POSE_REST]
+  },
+  jump: {
+    label:'Saut', dur:1.1, keyTimes:[0,0.32,0.6,1],
+    poses:[POSE_REST,
+      {ankle:[65,152],knee:[76,128],hip:[64,102],shoulder:[74,60],elbow:[90,68],hand:[104,74],head:[79,47],toe:[85,152]},
+      {ankle:[65,118],knee:[65,86],hip:[65,52],shoulder:[65,8],elbow:[58,-10],hand:[52,-30],head:[70,-5],toe:[85,118]},
+      POSE_REST]
+  },
+  lunge: {
+    label:'Fente', dur:1.7, keyTimes:[0,0.5,1],
+    poses:[POSE_REST,
+      {ankle:[105,152],knee:[105,122],hip:[80,108],shoulder:[82,64],elbow:[65,80],hand:[55,95],head:[87,51],toe:[125,152]},
+      POSE_REST]
+  },
+  plank: {
+    label:'Planche', dur:2.6, keyTimes:[0,0.5,1],
+    poses:[
+      {ankle:[133,141],knee:[110,139],hip:[86,137],shoulder:[50,135],elbow:[48,135],hand:[46,152],head:[35,129],toe:[150,145]},
+      {ankle:[133,142],knee:[110,140],hip:[86,140],shoulder:[50,138],elbow:[48,138],hand:[46,152],head:[35,132],toe:[150,146]},
+      {ankle:[133,141],knee:[110,139],hip:[86,137],shoulder:[50,135],elbow:[48,135],hand:[46,152],head:[35,129],toe:[150,145]}
+    ]
+  },
+  pushup: {
+    label:'Pompe', dur:1.5, keyTimes:[0,0.5,1],
+    poses:[
+      {ankle:[133,141],knee:[110,139],hip:[86,137],shoulder:[52,136],elbow:[50,144],hand:[48,152],head:[37,130],toe:[150,145]},
+      {ankle:[133,144],knee:[110,146],hip:[86,148],shoulder:[52,150],elbow:[58,140],hand:[48,152],head:[37,146],toe:[150,148]},
+      {ankle:[133,141],knee:[110,139],hip:[86,137],shoulder:[52,136],elbow:[50,144],hand:[48,152],head:[37,130],toe:[150,145]}
+    ]
+  },
+  dip: {
+    label:'Dips', dur:1.5, keyTimes:[0,0.5,1],
+    poses:[
+      {ankle:[133,128],knee:[100,118],hip:[70,110],shoulder:[66,72],elbow:[58,86],hand:[50,100],head:[70,58],toe:[150,132]},
+      {ankle:[133,132],knee:[100,124],hip:[70,128],shoulder:[64,92],elbow:[46,108],hand:[50,100],head:[68,78],toe:[150,134]},
+      {ankle:[133,128],knee:[100,118],hip:[70,110],shoulder:[66,72],elbow:[58,86],hand:[50,100],head:[70,58],toe:[150,132]}
+    ]
+  },
+  superman: {
+    label:'Superman', dur:1.8, keyTimes:[0,0.5,1],
+    poses:[
+      {ankle:[140,148],knee:[112,148],hip:[85,148],shoulder:[45,146],elbow:[20,146],hand:[5,146],head:[30,145],toe:[155,148]},
+      {ankle:[138,134],knee:[110,142],hip:[85,146],shoulder:[42,132],elbow:[15,128],hand:[0,120],head:[25,128],toe:[150,132]},
+      {ankle:[140,148],knee:[112,148],hip:[85,148],shoulder:[45,146],elbow:[20,146],hand:[5,146],head:[30,145],toe:[155,148]}
+    ]
+  },
+  hold: {
+    label:'Position', dur:2.4, keyTimes:[0,0.5,1],
+    poses:[POSE_REST,
+      {ankle:[65,152],knee:[65,119],hip:[65,84],shoulder:[65,40],elbow:[69,62],hand:[73,82],head:[70,27],toe:[85,152]},
+      POSE_REST]
+  }
+};
+
+// Course et jumping jack : vue de face, silhouette symétrique animée en CSS
+function buildFrontRig(type){
+  const cls = type==='jack' ? 'demo-jack' : 'demo-run';
+  return `<svg viewBox="0 0 120 155" class="demo-svg rig ${cls}" aria-hidden="true">
+    <line class="ground-line" x1="15" y1="148" x2="105" y2="148"/>
+    <g class="figure-group" style="transform-origin:60px 148px;">
+      <circle class="head" cx="60" cy="24" r="10"/>
+      <line class="seg-torso" x1="60" y1="35" x2="60" y2="88"/>
+      <g class="fg-leg-l" style="transform-origin:60px 88px;"><line class="seg-limb" x1="60" y1="88" x2="42" y2="140"/></g>
+      <g class="fg-leg-r" style="transform-origin:60px 88px;"><line class="seg-limb" x1="60" y1="88" x2="78" y2="140"/></g>
+      <g class="fg-arm-l" style="transform-origin:60px 48px;"><line class="seg-arm" x1="60" y1="48" x2="34" y2="70"/></g>
+      <g class="fg-arm-r" style="transform-origin:60px 48px;"><line class="seg-arm" x1="60" y1="48" x2="86" y2="70"/></g>
+      <circle class="joint" cx="60" cy="88" r="3"/>
+      <circle class="joint" cx="60" cy="48" r="3"/>
+    </g>
+  </svg>`;
+}
+
+function renderDemo(type){
+  const d = DEMOS[type];
+  const label = d ? d.label : (type==='jack' ? 'Jumping jack' : type==='run' ? 'Course' : 'Mouvement');
+  if(type==='run' || type==='jack'){
+    return `<div class="demo-wrap"><div class="demo-label">${REDUCE_MOTION? 'Position de référence' : 'Aperçu du mouvement'} — ${label}</div>${buildFrontRig(type)}</div>`;
+  }
+  const demo = d || DEMOS.hold;
+  const inner = buildRig(demo.poses, demo.keyTimes, demo.dur);
+  return `<div class="demo-wrap"><div class="demo-label">${REDUCE_MOTION? 'Position de référence' : 'Aperçu du mouvement'} — ${demo.label}</div><svg viewBox="0 0 160 170" class="demo-svg rig" aria-hidden="true">${inner}</svg></div>`;
+}
+</script>
+<script>
+/* Animations CSS pour la vue de face (course / jumping jack) */
+const frontStyle = document.createElement('style');
+frontStyle.textContent = `
+  @keyframes fRun{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+  @keyframes fLegFwd{0%,100%{transform:rotate(28deg);}50%{transform:rotate(-32deg);}}
+  @keyframes fLegBack{0%,100%{transform:rotate(-28deg);}50%{transform:rotate(32deg);}}
+  @keyframes fArmFwd{0%,100%{transform:rotate(-30deg);}50%{transform:rotate(35deg);}}
+  @keyframes fArmBack{0%,100%{transform:rotate(30deg);}50%{transform:rotate(-35deg);}}
+  .demo-run .figure-group{animation:fRun 0.42s ease-in-out infinite;}
+  .demo-run .fg-leg-l{animation:fLegFwd 0.42s ease-in-out infinite;}
+  .demo-run .fg-leg-r{animation:fLegBack 0.42s ease-in-out infinite;}
+  .demo-run .fg-arm-l{animation:fArmBack 0.42s ease-in-out infinite;}
+  .demo-run .fg-arm-r{animation:fArmFwd 0.42s ease-in-out infinite;}
+  @keyframes fJackLegL{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-24deg);}}
+  @keyframes fJackLegR{0%,100%{transform:rotate(0deg);}50%{transform:rotate(24deg);}}
+  @keyframes fJackArmL{0%,100%{transform:rotate(0deg);}50%{transform:rotate(-150deg);}}
+  @keyframes fJackArmR{0%,100%{transform:rotate(0deg);}50%{transform:rotate(150deg);}}
+  @keyframes fJackBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+  .demo-jack .figure-group{animation:fJackBob 1s ease-in-out infinite;}
+  .demo-jack .fg-leg-l{animation:fJackLegL 1s ease-in-out infinite;}
+  .demo-jack .fg-leg-r{animation:fJackLegR 1s ease-in-out infinite;}
+  .demo-jack .fg-arm-l{animation:fJackArmL 1s ease-in-out infinite;}
+  .demo-jack .fg-arm-r{animation:fJackArmR 1s ease-in-out infinite;}
+`;
+document.head.appendChild(frontStyle);
+</script>
+<script>
 function render(node){ const app=document.getElementById('app'); app.innerHTML=''; app.appendChild(node); }
  
 function levelMult(niveau){ return niveau==='debutant'?0.7:niveau==='avance'?1.3:1; }
@@ -751,4 +863,3 @@ if('serviceWorker' in navigator){
 </script>
 </body>
 </html>
- 
